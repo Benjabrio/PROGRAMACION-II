@@ -54,7 +54,13 @@ def dividir():
     resultado_entry.insert(0,resultado)
     resultado_entry.config(state='disabled')
 def porcentaje():
-    exit
+    num1 = float(primer_entry.get())
+    num2 = float(segundo_entry.get())
+    resultado = (num1 * num2) / 100
+    resultado_entry.config(state='normal')
+    resultado_entry.delete(0,tk.END)
+    resultado_entry.insert(0,resultado)
+    resultado_entry.config(state='disabled')
 def limpiar():
     primer_entry.delete(0,tk.END)
     segundo_entry.delete(0,tk.END)
@@ -72,7 +78,7 @@ boton3 = tk.Button(ventana, text="*",command=multiplicar)
 boton3.grid(row=4, column=0,padx = 5,pady=5)
 boton = tk.Button(ventana, text="/",command=dividir)
 boton.grid(row=4, column=1,padx = 5,pady=5)
-boton = tk.Button(ventana, text="%")
+boton = tk.Button(ventana, text="%",command=porcentaje)
 boton.grid(row=5, column=0,padx = 5,pady=5)
 boton = tk.Button(ventana, text="CLEAR",command=limpiar)
 boton.grid(row=5, column=1,padx = 5,pady=5)
