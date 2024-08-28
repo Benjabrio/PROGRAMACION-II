@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 ventana = tk.Tk()
 ventana.title("Calculadora")
@@ -48,7 +49,11 @@ def multiplicar():
 def dividir():
     num1 = float(primer_entry.get())
     num2 = float(segundo_entry.get())
-    resultado = num1 / num2
+    if num2 == 0:
+        messagebox.showerror("Error","No se puede dividir por 0")
+        return
+    else:
+        resultado = num1 / num2
     resultado_entry.config(state='normal')
     resultado_entry.delete(0,tk.END)
     resultado_entry.insert(0,resultado)
