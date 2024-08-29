@@ -19,6 +19,7 @@ lista.grid(row=1,column=1, padx = 10, pady=10)
 def agregar():
     pelicula = entrada.get()
     lista.insert(0,pelicula)
+    entrada.delete(0,tk.END)
 
 boton = tk.Button(ventana,text="Añadir", width= 10,command=agregar)
 boton.place(x=50, y=100)
