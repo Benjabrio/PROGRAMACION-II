@@ -22,50 +22,67 @@ segundo_entry.insert(0,0)
 resultado_entry = tk.Entry(ventana, width=10, state='disabled')
 resultado_entry.grid(row=2, column=1, padx=5)
 
-def sumar():
-    num1 = float(primer_entry.get())
-    num2 = float(segundo_entry.get())
-    resultado = num1 + num2
-    resultado_entry.config(state='normal')
-    resultado_entry.delete(0,tk.END)
-    resultado_entry.insert(0,resultado)
-    resultado_entry.config(state='disabled')
-def restar():
-    num1 = float(primer_entry.get())
-    num2 = float(segundo_entry.get())
-    resultado = num1 - num2
-    resultado_entry.config(state='normal')
-    resultado_entry.delete(0,tk.END)
-    resultado_entry.insert(0,resultado)
-    resultado_entry.config(state='disabled')
-def multiplicar():
-    num1 = float(primer_entry.get())
-    num2 = float(segundo_entry.get())
-    resultado = num1 * num2
-    resultado_entry.config(state='normal')
-    resultado_entry.delete(0,tk.END)
-    resultado_entry.insert(0,resultado)
-    resultado_entry.config(state='disabled')
-def dividir():
-    num1 = float(primer_entry.get())
-    num2 = float(segundo_entry.get())
-    if num2 == 0:
-        messagebox.showerror("Error","No se puede dividir por 0")
-        return
+def validar_entradas():
+    if not primer_entry.get() or not segundo_entry.get():
+        messagebox.showerror("Error", "Debe ingresar números en ambos campos")
+        return False
     else:
-        resultado = num1 / num2
-    resultado_entry.config(state='normal')
-    resultado_entry.delete(0,tk.END)
-    resultado_entry.insert(0,resultado)
-    resultado_entry.config(state='disabled')
+        return True
+
+def sumar():
+    validacion = validar_entradas()
+    if validacion is True:
+        num1 = float(primer_entry.get())
+        num2 = float(segundo_entry.get())
+        resultado = num1 + num2
+        resultado_entry.config(state='normal')
+        resultado_entry.delete(0,tk.END)
+        resultado_entry.insert(0,resultado)
+        resultado_entry.config(state='disabled')
+def restar():
+    validacion = validar_entradas()
+    if validacion is True:
+        num1 = float(primer_entry.get())
+        num2 = float(segundo_entry.get())
+        resultado = num1 - num2
+        resultado_entry.config(state='normal')
+        resultado_entry.delete(0,tk.END)
+        resultado_entry.insert(0,resultado)
+        resultado_entry.config(state='disabled')
+def multiplicar():
+    validacion = validar_entradas()
+    if validacion is True:
+        num1 = float(primer_entry.get())
+        num2 = float(segundo_entry.get())
+        resultado = num1 * num2
+        resultado_entry.config(state='normal')
+        resultado_entry.delete(0,tk.END)
+        resultado_entry.insert(0,resultado)
+        resultado_entry.config(state='disabled')
+def dividir():
+    validacion = validar_entradas()
+    if validacion is True:
+        num1 = float(primer_entry.get())
+        num2 = float(segundo_entry.get())
+        if num2 == 0:
+            messagebox.showerror("Error","No se puede dividir por 0")
+            return
+        else:
+            resultado = num1 / num2
+        resultado_entry.config(state='normal')
+        resultado_entry.delete(0,tk.END)
+        resultado_entry.insert(0,resultado)
+        resultado_entry.config(state='disabled')
 def porcentaje():
-    num1 = float(primer_entry.get())
-    num2 = float(segundo_entry.get())
-    resultado = (num1 * num2) / 100
-    resultado_entry.config(state='normal')
-    resultado_entry.delete(0,tk.END)
-    resultado_entry.insert(0,resultado)
-    resultado_entry.config(state='disabled')
+    validacion = validar_entradas()
+    if validacion is True:
+        num1 = float(primer_entry.get())
+        num2 = float(segundo_entry.get())
+        resultado = (num1 * num2) / 100
+        resultado_entry.config(state='normal')
+        resultado_entry.delete(0,tk.END)
+        resultado_entry.insert(0,resultado)
+        resultado_entry.config(state='disabled')
 def limpiar():
     primer_entry.delete(0,tk.END)
     segundo_entry.delete(0,tk.END)
